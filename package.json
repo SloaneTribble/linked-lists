@@ -1,0 +1,31 @@
+{
+  "name": "linked-lists",
+  "version": "1.0.0",
+  "description": "This assignment from The Odin Project focuses on implementing a singly-linked list along with several functions for its use and analysis.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch * .js",
+    "build:watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SloaneTribble/linked-lists.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SloaneTribble/linked-lists/issues"
+  },
+  "homepage": "https://github.com/SloaneTribble/linked-lists#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.18.10",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.3",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}

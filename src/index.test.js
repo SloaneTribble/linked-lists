@@ -1,5 +1,8 @@
-import { sayHi } from "./index.js";
+import { linkedList, node } from "./index";
 
-test("Testing works", () => {
-  expect(sayHi()).toBe("hi");
+test("A null node can be created", () => {
+  const nullNode = node();
+
+  expect(nullNode.value).toBe(null);
+  expect(nullNode.next).toBe(null);
 });

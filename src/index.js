@@ -17,6 +17,29 @@ const linkedList = function makeLinkedList() {
       }
       this.size++;
     },
+    prepend(value) {
+      const newNode = node(value);
+
+      if (this.head === null) {
+        this.head = newNode;
+        this.tail = newNode;
+      } else {
+        newNode.next = this.head;
+        this.head = newNode;
+      }
+    },
+    toString() {
+      let currentNode = this.head;
+      let string = "";
+      string += `( ${currentNode.value} ) ->`;
+      while (currentNode.next) {
+        string += ` ( ${currentNode.next.value} ) ->`;
+        currentNode = currentNode.next;
+      }
+      string += ` null `;
+
+      return string;
+    },
 
     size: 0,
     head: null,

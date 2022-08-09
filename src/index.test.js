@@ -27,7 +27,7 @@ test("A linked list can append a node", () => {
   expect(houses.tail.value).toBe("casita");
 });
 
-test("A linked list can append two nodes", () => {
+test("A linked list can append two nodes, keeps track of size", () => {
   const houses = linkedList();
 
   houses.append("bungalo");
@@ -77,4 +77,32 @@ test("Linked lists are correctly represented", () => {
   expect(houses.toString()).toBe(
     "( villa ) -> ( bungalo ) -> ( casita ) -> ( hutch ) -> null "
   );
+});
+
+test("Value of node at a given index can be accessed", () => {
+  const houses = linkedList();
+
+  houses.append("bungalo");
+
+  houses.append("casita");
+
+  houses.append("hutch");
+
+  expect(houses.at(3)).toBe("hutch");
+});
+
+test("Values can be popped from list", () => {
+  const houses = linkedList();
+
+  houses.append("bungalo");
+
+  houses.append("casita");
+
+  houses.append("hutch");
+
+  expect(houses.pop().value).toBe("hutch");
+
+  expect(houses.size).toBe(2);
+
+  expect(houses.tail.value).toBe("casita");
 });

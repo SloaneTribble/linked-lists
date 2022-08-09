@@ -40,6 +40,27 @@ const linkedList = function makeLinkedList() {
 
       return string;
     },
+    at(index) {
+      let currentNode = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        currentNode = currentNode.next;
+      }
+      return currentNode.value;
+    },
+
+    pop() {
+      let popped = this.tail;
+      let currentNode = this.head;
+      let penultimateIndex = this.size - 2;
+      for (let i = 0; i < penultimateIndex; i++) {
+        currentNode = currentNode.next;
+      }
+      this.tail = currentNode;
+      currentNode.next = null;
+      this.size--;
+
+      return popped;
+    },
 
     size: 0,
     head: null,

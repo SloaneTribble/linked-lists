@@ -62,6 +62,30 @@ const linkedList = function makeLinkedList() {
       return popped;
     },
 
+    contains(value) {
+      let currentNode = this.head;
+      while (currentNode) {
+        if (currentNode.value === value) {
+          return true;
+        }
+        currentNode = currentNode.next;
+      }
+      return false;
+    },
+
+    find(value) {
+      let currentNode = this.head;
+      let index = 0;
+      while (currentNode) {
+        if (currentNode.value === value) {
+          return index;
+        }
+        currentNode = currentNode.next;
+        index++;
+      }
+      return null;
+    },
+
     size: 0,
     head: null,
     tail: null,

@@ -105,4 +105,34 @@ test("Values can be popped from list", () => {
   expect(houses.size).toBe(2);
 
   expect(houses.tail.value).toBe("casita");
+
+  expect(houses.toString()).toBe("( bungalo ) -> ( casita ) -> null ");
+});
+
+test("A value's presence in list can be detected", () => {
+  const houses = linkedList();
+
+  houses.append("bungalo");
+
+  houses.append("casita");
+
+  houses.append("hutch");
+
+  expect(houses.contains("casita")).toBe(true);
+
+  expect(houses.contains("duplex")).toBe(false);
+});
+
+test("A value's location, if present, can be detected", () => {
+  const houses = linkedList();
+
+  houses.append("bungalo");
+
+  houses.append("casita");
+
+  houses.append("hutch");
+
+  expect(houses.find("casita")).toBe(1);
+
+  expect(houses.find("flophouse")).toBe(null);
 });

@@ -160,7 +160,7 @@ test("Node can be specifically inserted at head or tail", () => {
   expect(houses.tail.value).toBe("tent");
 });
 
-test.only("Node can be specifically inserted in middle of list", () => {
+test("Node can be inserted at specific index of list", () => {
   const houses = linkedList();
 
   houses.append("casita");
@@ -184,4 +184,48 @@ test.only("Node can be specifically inserted in middle of list", () => {
   expect(houses.toString()).toBe(
     "( casita ) -> ( bungalo ) -> ( whippledip ) -> ( hutch ) -> null "
   );
+});
+
+test("Node can be specifically removed from head or tail of list", () => {
+  const houses = linkedList();
+
+  houses.append("bungalo");
+
+  houses.append("casita");
+
+  houses.append("hutch");
+
+  houses.removeAt(0);
+
+  expect(houses.head.value).toBe("casita");
+
+  houses.removeAt(1);
+
+  expect(houses.tail.value).toBe("casita");
+});
+
+test.only("Node can be removed from specific index of list", () => {
+  const houses = linkedList();
+
+  houses.append("bungalo");
+
+  houses.append("casita");
+
+  houses.append("hutch");
+
+  houses.removeAt(1);
+
+  expect(houses.toString()).toBe("( bungalo ) -> ( hutch ) -> null ");
+
+  houses.prepend("tent");
+  houses.append("basket");
+
+  expect(houses.head.value).toBe("tent");
+  expect(houses.tail.value).toBe("basket");
+
+  expect(houses.toString()).toBe("( tent ) -> ( bungalo ) -> ( hutch ) -> ( basket ) -> null ");
+
+  houses.removeAt(2);
+
+  expect(houses.toString()).toBe("( tent ) -> ( bungalo ) -> ( basket ) -> null ");
 });

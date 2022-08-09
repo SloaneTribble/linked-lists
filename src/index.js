@@ -50,6 +50,12 @@ const linkedList = function makeLinkedList() {
     },
 
     pop() {
+      if (this.size === 1) {
+        this.head = null;
+        this.tail = null;
+        return;
+      }
+
       let popped = this.tail;
       let currentNode = this.head;
       let penultimateIndex = this.size - 2;
@@ -110,6 +116,28 @@ const linkedList = function makeLinkedList() {
       nodeBefore.next = newNode;
       newNode.next = nodeAfter;
       this.size++;
+    },
+
+    removeAt(index) {
+      if (index === this.size - 1) {
+        this.pop();
+        return;
+      }
+
+      if (index === 0) {
+        this.head = this.head.next;
+        this.size--;
+      }
+
+      let nodeBefore = this.head;
+      let nodeAfter;
+      let i = 0;
+      while (i < index - 1) {
+        nodeBefore = nodeBefore.next;
+        i++;
+      }
+      nodeAfter = nodeBefore.next.next;
+      nodeBefore.next = nodeAfter;
     },
 
     size: 0,

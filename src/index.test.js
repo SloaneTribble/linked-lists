@@ -133,6 +133,55 @@ test("A value's location, if present, can be detected", () => {
   houses.append("hutch");
 
   expect(houses.find("casita")).toBe(1);
+  expect(houses.find("hutch")).toBe(2);
 
   expect(houses.find("flophouse")).toBe(null);
+});
+
+test("Node can be specifically inserted at head or tail", () => {
+  const houses = linkedList();
+
+  houses.append("casita");
+
+  houses.append("hutch");
+
+  houses.insertAt("bungalo", 0);
+
+  expect(houses.head.value).toBe("bungalo");
+
+  expect(houses.size).toBe(3);
+
+  houses.insertAt("tent", 3);
+
+  expect(houses.toString()).toBe(
+    "( bungalo ) -> ( casita ) -> ( hutch ) -> ( tent ) -> null "
+  );
+
+  expect(houses.tail.value).toBe("tent");
+});
+
+test.only("Node can be specifically inserted in middle of list", () => {
+  const houses = linkedList();
+
+  houses.append("casita");
+
+  houses.append("hutch");
+
+  expect(houses.size).toBe(2);
+
+  houses.insertAt("bungalo", 1);
+
+  expect(houses.head.value).toBe("casita");
+
+  expect(houses.tail.value).toBe("hutch");
+
+  expect(houses.toString()).toBe(
+    "( casita ) -> ( bungalo ) -> ( hutch ) -> null "
+  );
+
+  houses.insertAt("whippledip", 2);
+
+  expect(houses.toString()).toBe(
+    "( casita ) -> ( bungalo ) -> ( whippledip ) -> ( hutch ) -> null "
+  );
 });

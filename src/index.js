@@ -27,6 +27,7 @@ const linkedList = function makeLinkedList() {
         newNode.next = this.head;
         this.head = newNode;
       }
+      this.size++;
     },
     toString() {
       let currentNode = this.head;
@@ -84,6 +85,31 @@ const linkedList = function makeLinkedList() {
         index++;
       }
       return null;
+    },
+
+    insertAt(value, index) {
+      const newNode = node(value);
+      let nodeBefore = this.head;
+      let nodeAfter;
+
+      if (index === 0) {
+        this.prepend(value);
+        return;
+      }
+      if (index === this.size) {
+        this.append(value);
+        return;
+      }
+
+      let i = 0;
+      while (i < index - 1) {
+        nodeBefore = nodeBefore.next;
+        i++;
+      }
+      nodeAfter = nodeBefore.next;
+      nodeBefore.next = newNode;
+      newNode.next = nodeAfter;
+      this.size++;
     },
 
     size: 0,
